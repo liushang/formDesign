@@ -3,7 +3,7 @@ import ElementKeyword from './ui/element/keyword';
 import StandardKeyword from './ui/standardKeywords';
 import { toSeparator } from './util';
 import ogvdesign from './ogvdesign';
-import oTable from './ui/element/table.js';
+// import designUtil from '../page/index/Home';
 class OGVSchema {
     constructor() {
         setTimeout(() => {
@@ -17,13 +17,7 @@ class OGVSchema {
     install(app, options) {
         Vue.component('ogvdesign', Vue.extend(ogvdesign));
         console.log('install');
-        console.log(oTable);
-        Vue.component('oTable', oTable);
-        // const MyComponent = app.component('ElRow', {});
-        // console.log(MyComponent.options);
-        // window.OGVSchema = this;
-        // console.log('window ogvschema');
-        // console.log(window.OGVSchema);
+        // Vue.component('designUtil', Vue.extend(designUtil));
     }
     getUiLbraryGather() {
         console.log(Vue.options);
