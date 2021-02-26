@@ -1,59 +1,9 @@
 import Vue from 'vue';
-import ElementKeyword from './ui/element/keyword';
-import StandardKeyword from './ui/standardKeywords';
-import { toSeparator } from './util';
 import ogvdesign from './ogvdesign';
-// import designUtil from '../page/index/Home';
-class OGVSchema {
-    constructor() {
-        setTimeout(() => {
-            this.uiLibraryGather = this.getUiLbraryGather();
-            this.setUiKeywordMap(this.uiLibraryGather);
-            window.OGVSchema = this;
-            console.log('window ogvschema');
-            console.log(window.OGVSchema);
-        }, 0);
-    }
+let ogvSchema = {
     install(app, options) {
         Vue.component('ogvdesign', Vue.extend(ogvdesign));
-        console.log('install');
-        // Vue.component('designUtil', Vue.extend(designUtil));
-    }
-    getUiLbraryGather() {
-        console.log(Vue.options);
-        const { components } = Vue.options;
-        const elementUiComponents = {};
-        // const elementUiComponents = components.filter(i => i.startsWith(''))
-        for (let i in components) {
-            if (i.startsWith('El')) {
-                const uiName = i.split('El')[1];
-                const separatorUiName = toSeparator(uiName);
-                if (ElementKeyword.components[separatorUiName]) {
-                    elementUiComponents[separatorUiName] = components[i];
-                }
-            }
-        }
-        return {
-            elementUi: elementUiComponents
-        };
-    }
-    setUiKeywordMap(uiLibraryGather) {
-        let uiKeywordMap = {};
-        const elementUiKeyword = ElementKeyword.components;
-        const standardKeywords = StandardKeyword.components;
-        for (let i in uiLibraryGather) {
-            uiKeywordMap[i] = {};
-            if (i === 'elementUi') {
-                for (let y in uiLibraryGather[i]) {
-                    if (elementUiKeyword[y]) {
-                        let keywords = standardKeywords[y];
-                        keywords.keyMap = elementUiKeyword[y].keywords;
-                        uiLibraryGather[i][y].OGV_standardMap = keywords;
-                    }
-                }
-            }
-        }
+        window.OGVSchema = this;
     }
 }
-let ogvSchema = new OGVSchema();
 export default ogvSchema;

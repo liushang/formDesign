@@ -1,6 +1,6 @@
 {
   "name": "iicarus",
-  "version": "1.0.3",
+  "version": "1.0.21",
   "description": "",
   "main": "schema/index.js",
   "scripts": {
